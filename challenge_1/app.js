@@ -122,4 +122,19 @@ function displayInput(square) {
     console.log('Player O has 3 in a row');
     initialize();
   }
+
+  let board = [case1, case2, case3, case4, case5, case6, case7, case8, case9];
+  //check if board is full
+  if (!board.includes("")) {
+    console.log('Board is full');
+  }
+
 }
+
+
+//button eventlistener
+let resetButton = document.getElementById('reset');
+resetButton.addEventListener('click', function() {
+  console.log('trying to reset');
+  initialize();
+});
