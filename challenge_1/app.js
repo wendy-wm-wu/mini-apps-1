@@ -6,6 +6,21 @@ console.log('working');
 let squares = document.getElementsByTagName('td');
 console.log(squares);
 
+//wipes out page
+function initialize() {
+  document.getElementById('case 1').innerHTML = "";
+  document.getElementById('case 5').innerHTML = "";
+  document.getElementById('case 9').innerHTML = "";
+  //bottom left to top right diagonal
+  document.getElementById('case 7').innerHTML = "";
+  document.getElementById('case 3').innerHTML = "";
+  //other cases
+  document.getElementById('case 2').innerHTML = "";
+  document.getElementById('case 4').innerHTML = "";
+  document.getElementById('case 6').innerHTML = "";
+  document.getElementById('case 8').innerHTML = "";
+}
+
 //create a variable that keeps track of which player's turn is next.
   //use a number to track turn
 let player_one = 1;
@@ -56,49 +71,55 @@ function displayInput(square) {
   //check for diagonal wins
   if (case1 === 'X' && case5 === 'X' && case9 === 'X') {
     console.log('Player X has 3 in a row');
+    initialize();
   } else if (case1 === 'O' && case5 === 'O' && case9 === 'O') {
     console.log('Player O has 3 in a row');
+    initialize();
   } else if (case7 === 'X' && case5 === 'X' && case3 === 'X') {
     console.log('Player X has 3 in a row');
+    initialize();
   } else if (case7 === 'O' && case5 === 'O' && case3 === 'O') {
     console.log('Player O has 3 in a row');
+    initialize();
   }
   //horizontals
   if (JSON.stringify(horizontal1) === JSON.stringify(["X", "X", "X"])) {
     console.log('Player X has 3 in a row');
+    initialize();
   } else if (JSON.stringify(horizontal1) === JSON.stringify(["O", "O", "O"])) {
     console.log('Player O has 3 in a row');
+    initialize();
   } else if (JSON.stringify(horizontal2) === JSON.stringify(["X", "X", "X"])) {
     console.log('Player X has 3 in a row');
+    initialize();
   } else if (JSON.stringify(horizontal2) === JSON.stringify(["O", "O", "O"])) {
     console.log('Player O has 3 in a row');
+    initialize();
   } else if (JSON.stringify(horizontal3) === JSON.stringify(["X", "X", "X"])) {
     console.log('Player X has 3 in a row');
+    initialize();
   } else if (JSON.stringify(horizontal3) === JSON.stringify(["O", "O", "O"])) {
     console.log('Player O has 3 in a row');
+    initialize();
   }
   //verticals
   if (JSON.stringify(vertical1) === JSON.stringify(["X", "X", "X"])) {
     console.log('Player X has 3 in a row');
+    initialize();
   } else if (JSON.stringify(vertical1) === JSON.stringify(["O", "O", "O"])) {
     console.log('Player O has 3 in a row');
+    initialize();
   } else if (JSON.stringify(vertical2) === JSON.stringify(["X", "X", "X"])) {
     console.log('Player X has 3 in a row');
+    initialize();
   } else if (JSON.stringify(vertical2) === JSON.stringify(["O", "O", "O"])) {
     console.log('Player O has 3 in a row');
+    initialize();
   } else if (JSON.stringify(vertical3) === JSON.stringify(["X", "X", "X"])) {
     console.log('Player X has 3 in a row');
+    initialize();
   } else if (JSON.stringify(vertical3) === JSON.stringify(["O", "O", "O"])) {
     console.log('Player O has 3 in a row');
+    initialize();
   }
 }
-
-
-
-
-
-
-
-
-
-
