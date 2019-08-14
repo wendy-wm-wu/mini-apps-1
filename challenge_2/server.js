@@ -5,7 +5,7 @@ const path = require('path');
 const port = 3000; 
 const morgan = require('morgan');
 const bodyParser = require('body-parser')
-const App = require('./client/app.js')
+const functions = require('./functions.js')
 
 app.use(morgan('combined'))
 app.use(express.static('client'));
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post('/upload_json', (req,res) => {
     let parsedReqBody = JSON.parse(req.body['input-box']); 
-    let employeeData = App.recurse(parsedReqBody); 
+    let employeeData = functions.recurse(parsedReqBody); 
     console.log(employeeData)
     res.set('Content-Type', 'text/plain'); 
     res.send(employeeData); 

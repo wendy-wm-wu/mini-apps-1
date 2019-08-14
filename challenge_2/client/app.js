@@ -1,31 +1,17 @@
-
-function getValues(obj) {
-  let csv = "";
-  for (var key in obj) {
-    if (key !== "children") {
-      csv += obj[key] + ',';  
-    } else {
-      continue; 
-    }
-  }
-  return csv.slice(0, -1);
+/////////////AJAX///////////////
+function postData(options) {
+  $.ajax({
+    url: '/upload_json',
+    method: 'POST',
+    success: (data) => {
+      $('form').on('submit', function(e) {
+        e.preventDefault(); 
+      }); 
+      $('#input-box').append(data);
+      console.log('success')},
+    error: (data) => console.log('Error in retreiving', data)
+  }); 
 }
 
-let csv = "firstName,lastName,county,city,role, sales"; 
+//preventing page reload// 
 
-function recurse(obj) {
-  for (let i = 0; i < obj.children.length; i++) {
-    csv += `\n${getValues(obj.children[i])}`; 
-    if (obj.children.length > 0) {
-      recurse(obj.children[i]); 
-    }
-  }
-  //base case
-  return csv; 
-}
-
-
-module.exports = {
-  getValues: getValues,
-  recurse: recurse, 
-}
