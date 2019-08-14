@@ -1,59 +1,31 @@
 
-var convertToCSV = function(obj) {
-    var str = '';
-    var keys = Object.keys(obj); 
+function getValues(obj) {
+  let csv = "";
+  for (var key in obj) {
+    if (key !== "children") {
+      csv += obj[key] + ',';  
+    } else {
+      continue; 
+    }
+  }
+  return csv.slice(0, -1);
 }
 
-module.exports = {
-    convertToCSV: convertToCSV,
-};
+let csv = "firstName,lastName,county,city,role, sales"; 
 
-
-
-{
-    "firstName": "Joshie",
-    "lastName": "Wyattson",
-    "county": "San Mateo",
-    "city": "San Mateo",
-    "role": "Broker",
-    "sales": 1000000,
-    "children": [
-    {
-      "firstName": "Beth Jr.",
-      "lastName": "Johnson",
-      "county": "San Mateo",
-      "city": "Pacifica",
-      "role": "Manager",
-      "sales": 2900000,
-      "children": [
-        {
-          "firstName": "Smitty",
-          "lastName": "Won",
-          "county": "San Mateo",
-          "city": "Redwood City",
-          "role": "Sales Person",
-          "sales": 4800000,
-          "children": []
-        },
-        {
-          "firstName": "Allen",
-          "lastName": "Price",
-          "county": "San Mateo",
-          "city": "Burlingame",
-          "role": "Sales Person",
-          "sales": 2500000,
-          "children": []
-        }
-      ]
-    },
-    {
-      "firstName": "Beth",
-      "lastName": "Johnson",
-      "county": "San Francisco",
-      "city": "San Francisco",
-      "role": "Broker/Sales Person",
-      "sales": 7500000,
-      "children": []
+function recurse(obj) {
+  for (let i = 0; i < obj.children.length; i++) {
+    csv += `\n${getValues(obj.children[i])}`; 
+    if (obj.children.length > 0) {
+      recurse(obj.children[i]); 
     }
-  ]
-};
+  }
+  //base case
+  return csv; 
+}
+
+
+module.exports = {
+  getValues: getValues,
+  recurse: recurse, 
+}
